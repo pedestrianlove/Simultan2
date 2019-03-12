@@ -35,12 +35,8 @@ int main()
 	while(scanf("%d", &price_buffer) != EOF)
 	{
 		counter++;
-		int *temp_array = realloc(price_record, (counter)*sizeof(int));
-		if(temp_array != NULL)
-		{
-			price_record = temp_array;
-			price_record[counter] = price_buffer;
-		}
+		price_record = realloc(price_record, (counter)*sizeof(int));
+		price_record[counter-1] = price_buffer;
 	}
 
 	
