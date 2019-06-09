@@ -154,7 +154,6 @@ function git_add_key {
 	git remote set-url origin git@github.com:pedestrianlove/$1.git;
 }
 export -f git_add_key
-alias work="ssh -X jsl@140.114.221.74"
 alias update="git pull origin master"
 alias CODE="cd ~/CODE"
 alias makegen="cp ~/makefile makefile"
