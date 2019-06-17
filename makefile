@@ -9,4 +9,5 @@ zsh:
 	brew tap sambadevi/powerlevel9k
 	brew install powerlevel9k
 	echo "source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc
-	exec zsh	
+	exec zsh
+	clear	
