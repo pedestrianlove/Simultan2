@@ -138,12 +138,28 @@ ex ()
   fi
 }
 
-# usable alias
-
+# Useful commands
+function lt {
+	leetcode show $1 -g -x -l c -e;
+}
+export -f lt
 function allegro {
 	gcc -g -Wall $1 `pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`;
 }
 export -f allegro
+alias work="ssh -X dld003@nthucad.cs.nthu.edu.tw"
+alias gpu_off="nvidia-settings --assign GPULogoBrightness=0"
+alias gpu_on="nvidia-settings --assign GPULogoBrightness=100"
+alias gpu_setup="export DISPLAY=:0.0"
+alias gpu_reset="nvidia-settings -a [gpu:0]/GPUFanControlState=0"
+alias gpu_max="nvidia-settings -a [gpu:0]/GPUFanControlState=1 -a [fan:0]/GPUTargetFanSpeed=100"
+alias clear_vim="rm ~/.cache/vim/swap/*"
+alias display_on="xrandr --output HDMI-0 --auto"
+alias display_off="xrandr --output HDMI-0 --off"
+alias CODE="cd ~/CODE"
+alias I2P="cd ~/CODE/I2P"
+alias DS="cd ~/CODE/CODE/DS"
+alias update="git pull origin master"
 function upload {
 	git add --all
 	git commit -m "$1"
@@ -154,9 +170,6 @@ function git_add_key {
 	git remote set-url origin git@github.com:pedestrianlove/$1.git;
 }
 export -f git_add_key
-alias update="git pull origin master"
-alias CODE="cd ~/CODE"
-alias makegen="cp ~/makefile makefile"
 
 # better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
