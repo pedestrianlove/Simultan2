@@ -13,11 +13,23 @@ function lt {
 function allegro {
 	gcc -g -Wall $1 `pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`;
 }
+
+
+# SYSTEM ALIAS
+alias stop="shutdown now"
+
+# SSLVPN ALIAS
+alias nthu="sudo openconnect --juniper nthu.twaren.net --user=s105021226@wlan.nthu.edu.tw"
+
+# SSH ALIAS
+alias work="ssh -X dld003@nthucad.cs.nthu.edu.tw"
+alias math="ssh u105021226@learn.math.nthu.edu.tw"
+
 alias gpu_off="nvidia-settings --assign GPULogoBrightness=0"
 alias gpu_on="nvidia-settings --assign GPULogoBrightness=100"
 alias gpu_setup="export DISPLAY=:0.0"
-alias gpu_reset="nvidia-settings -a [gpu:0]/GPUFanControlState=0"
-alias gpu_max="nvidia-settings -a [gpu:0]/GPUFanControlState=1 -a [fan:0]/GPUTargetFanSpeed=100"
+alias gpu_reset="nvidia-settings --assign GPUFanControlState=0"
+alias gpu_max="nvidia-settings --assign GPUFanControlState=1 --assign GPUTargetFanSpeed=100"
 alias clear_vim="rm ~/.cache/vim/swap/*"
 alias display_on="xrandr --output HDMI-0 --auto"
 alias display_off="xrandr --output HDMI-0 --off"
@@ -26,6 +38,10 @@ alias I2P="cd ~/CODE/I2P"
 alias DS="cd ~/CODE/CODE/DS"
 alias update="git pull origin master"
 alias makegen="cp ~/.makefile makefile"
+alias run="make && make run"
+function vimb {
+	vim -O $1.h $1.cpp
+}
 function partialgen {
 	cp ~/Downloads/$1.c $1.c
 	cp ~/Downloads/$1.h function.h
@@ -34,6 +50,10 @@ function upload {
 	git add --all
 	git commit -m "$1"
 	git push -u origin master
+}
+function save {
+	git add --all
+	git commit -m "update"
 }
 
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
