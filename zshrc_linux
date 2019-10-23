@@ -15,6 +15,13 @@ function allegro {
 }
 
 
+# NOTES ALIAS
+function note {
+	cd ~/notes
+	update
+	vim `date +%Y`-`date +%b`.note
+}
+
 # SYSTEM ALIAS
 alias stop="shutdown now"
 
@@ -54,6 +61,7 @@ function upload {
 function save {
 	git add --all
 	git commit -m "update"
+	git push -u origin master
 }
 
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
