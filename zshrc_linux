@@ -65,7 +65,9 @@ function note {
 	vim `date +%Y`-`date +%b`.note
 }
 
-# Classical ALIAS
+# MUSIC ALIAS
 alias classic="mpv http://onair.family977.com.tw:8000/live.mp3"
+alias bible="mpv http://192.240.97.67:8153/"
+
 
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
