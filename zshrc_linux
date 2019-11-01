@@ -1,3 +1,4 @@
+export LANG="en_US.UTF-8"
 # System
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
@@ -64,6 +65,7 @@ function note {
 	update
 	vim `date +%Y`-`date +%b`.note
 }
+alias line="chromium 'chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html'"
 
 # MUSIC ALIAS
 alias classic="mpv http://onair.family977.com.tw:8000/live.mp3"
