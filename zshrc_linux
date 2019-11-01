@@ -71,5 +71,8 @@ alias line="chromium 'chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.
 alias classic="mpv http://onair.family977.com.tw:8000/live.mp3"
 alias bible="mpv http://192.240.97.67:8153/"
 
+# VIDEO ALIAS
+alias play="mpv *.mp4"
+
 
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
