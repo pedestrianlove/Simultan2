@@ -27,6 +27,8 @@ alias nthu="sudo openconnect --juniper nthu.twaren.net --user=s105021226@wlan.nt
 alias work="ssh -X dld003@nthucad.cs.nthu.edu.tw"
 alias math="ssh u105021226@learn.math.nthu.edu.tw"
 
+# MISC ALIAS
+alias off="sleep 1; xset dpms force off"
 alias gpu_off="nvidia-settings --assign GPULogoBrightness=0"
 alias gpu_on="nvidia-settings --assign GPULogoBrightness=100"
 alias gpu_setup="export DISPLAY=:0.0"
@@ -60,6 +62,14 @@ function save {
 }
 
 # NOTES ALIAS
+function init {
+	cd ~/notes
+	update
+	echo " " >> `date +%Y`-`date +%b`.note
+	echo "********************************************************************************" >> `date +%Y`-`date +%b`.note
+	date >> `date +%Y`-`date +%b`.note
+	vim `date +%Y`-`date +%b`.note
+}
 function note {
 	cd ~/notes
 	update
@@ -75,4 +85,10 @@ alias bible="mpv http://192.240.97.67:8153/"
 alias play="mpv *.mp4"
 
 
+function save_zsh {
+	cd ~/utils
+	update
+	cp ~/.zshrc zshrc_linux
+	save
+}
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
