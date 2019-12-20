@@ -28,6 +28,7 @@ alias work="ssh -X dld003@nthucad.cs.nthu.edu.tw"
 alias math="ssh u105021226@learn.math.nthu.edu.tw"
 
 # MISC ALIAS
+alias drive="cd /run/media/jsl/03F0358B02495C5A/"
 alias off="sleep 1; xset dpms force off"
 alias gpu_off="nvidia-settings --assign GPULogoBrightness=0"
 alias gpu_on="nvidia-settings --assign GPULogoBrightness=100"
@@ -43,6 +44,8 @@ alias DS="cd ~/CODE/CODE/DS"
 alias update="git pull origin master"
 alias makegen="cp ~/.makefile makefile"
 alias run="make && make run"
+
+# CODE ALIAS
 function vimb {
 	vim -O $1.h $1.cpp
 }
@@ -59,6 +62,7 @@ function save {
 	git add --all
 	git commit -m "update"
 	git push -u origin master
+	ssh -t u105021226@learn.math.nthu.edu.tw "cd ~/data/notes ; git pull origin master ; exit"
 }
 
 # NOTES ALIAS
