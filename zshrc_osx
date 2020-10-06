@@ -1,34 +1,126 @@
-# System
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
-alias np='nano -w PKGBUILD'
-alias more=less
-alias ls="exa"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Useful commands
-function lt {
-	leetcode show $1 -g -x -l c -e;
-}
-function allegro {
-	gcc -g -Wall $1 `pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`;
-}
-alias gpu_off="nvidia-settings --assign GPULogoBrightness=0"
-alias gpu_on="nvidia-settings --assign GPULogoBrightness=100"
-alias gpu_setup="export DISPLAY=:0.0"
-alias gpu_reset="nvidia-settings -a [gpu:0]/GPUFanControlState=0"
-alias gpu_max="nvidia-settings -a [gpu:0]/GPUFanControlState=1 -a [fan:0]/GPUTargetFanSpeed=100"
-alias clear_vim="rm ~/.cache/vim/swap/*"
-alias display_on="xrandr --output HDMI-0 --auto"
-alias display_off="xrandr --output HDMI-0 --off"
-alias CODE="cd ~/CODE"
-alias I2P="cd ~/CODE/I2P"
-alias DS="cd ~/CODE/CODE/DS"
-alias update="git pull origin master"
-alias makegen="cp ~/.makefile makefile"
-function partialgen {
-	cp ~/Downloads/$1.c $1.c
-	cp ~/Downloads/$1.h function.h
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+#export ZSH="/Users/JHIH-SIOU-LI/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+# source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Python environment
+# source ~/env-name/bin/activate
+
+# telnet alias
+alias ptt='ssh bbsu@ptt.cc'
+alias nthu='ssh bbsu@bbs.cs.nthu.edu.tw'
+
+# SSLVPN alias
+alias sslvpn='sudo openconnect --juniper nthu.twaren.net'
+
+# GIT alias
+function save {
+	make
+	git add --all
+	git commit -m "update"
+	git push -u origin master
+	# ssh -t u105021226@learn.math.nthu.edu.tw "cd ~/data/notes ; git pull origin master ; exit ; exit"
 }
 function upload {
 	git add --all
@@ -36,4 +128,60 @@ function upload {
 	git push -u origin master
 }
 
-source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+
+function update {
+	git pull origin master
+}
+
+# NOTES alias
+function note {
+	cd ~/notes
+	update
+	vim `date +%Y`-`date +%b`.note
+}
+
+function init {
+	cd ~/notes
+	update
+	echo " " >> `date +%Y`-`date +%b`.note
+	echo "********************************************************************************" >> `date +%Y`-`date +%b`.note
+	date >> `date +%Y`-`date +%b`.note
+	vim `date +%Y`-`date +%b`.note
+}
+
+
+# SSH alias
+alias math='ssh u105021226@learn.math.nthu.edu.tw'
+alias work='ssh jsl@140.114.221.42'
+alias hua='ssh hua@140.114.27.239'
+function oracle {
+	ssh ubuntu@140.238.58.46 -i ~/.ssh/oracle_rsa
+}
+
+
+alias pyboard='ampy --port /dev/tty.wchusbserial1420'
+alias CODE='cd ~/CODE'
+alias DS='cd ~/CODE/DS'
+alias I2P='cd ~/CODE/I2P'
+alias BASH='chsh -s /bin/bash'
+alias ls='exa'
+alias makegen='cp ~/makefile makefile'
+alias run='make && make run'
+
+# Music alias
+alias bible='mpv http://192.240.97.67:8153/'
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/usr/local/sbin:$PATH"
+
+
+export GPG_TTY=tty
+
+# enable pkgconfig
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
