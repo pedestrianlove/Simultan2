@@ -16,4 +16,10 @@ arch:
 	sudo pacman -S exa
 	sudo pacman -S zsh-theme-powerlevel9k
 	cp zshrc_linux ~/.zshrc
-	exec zsh	
+	exec zsh
+ubuntu:
+	sudo apt intsall konsole fonts-firacode zsh
+	cp Dracula.colortheme ~/.local/share/konsole/
+	cp zshrc_ubuntu ~/.zshrc
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+	echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc

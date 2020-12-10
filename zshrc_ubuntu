@@ -1,0 +1,114 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export LANG="en_US.UTF-8"
+# System
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias np='nano -w PKGBUILD'
+alias more=less
+
+# Useful commands
+function lt {
+	leetcode show $1 -g -x -l c -e;
+}
+function allegro {
+	gcc -g -Wall $1 `pkg-config --cflags --libs allegro-5 allegro_acodec-5 allegro_audio-5 allegro_color-5 allegro_dialog-5 allegro_font-5 allegro_image-5 allegro_main-5 allegro_memfile-5 allegro_physfs-5 allegro_primitives-5 allegro_ttf-5`;
+}
+
+
+
+# SYSTEM ALIAS
+alias stop="shutdown now"
+
+# SSLVPN ALIAS
+alias nthu="sudo openconnect --juniper nthu.twaren.net --user=s105021226@wlan.nthu.edu.tw"
+
+# SSH ALIAS
+alias work="ssh -X dld003@nthucad.cs.nthu.edu.tw"
+alias math="ssh u105021226@learn.math.nthu.edu.tw"
+
+# MISC ALIAS
+alias config="vim ~/.config/i3/config"
+alias drive="cd /run/media/jsl/03F0358B02495C5A/"
+alias off="sleep 1; xset dpms force off"
+alias gpu_off="nvidia-settings --assign GPULogoBrightness=0"
+alias gpu_on="nvidia-settings --assign GPULogoBrightness=100"
+alias gpu_setup="export DISPLAY=:0.0"
+alias gpu_reset="nvidia-settings --assign GPUFanControlState=0"
+alias gpu_max="nvidia-settings --assign GPUFanControlState=1 --assign GPUTargetFanSpeed=100"
+alias clear_vim="rm ~/.cache/vim/swap/*"
+alias display_on="xrandr --output HDMI-0 --auto"
+alias display_off="xrandr --output HDMI-0 --off"
+alias CODE="cd ~/CODE"
+alias I2P="cd ~/CODE/I2P"
+alias DS="cd ~/CODE/CODE/DS"
+alias update="git pull origin master"
+alias makegen="cp ~/.makefile makefile"
+alias run="make && make run"
+
+# CODE ALIAS
+function vimb {
+	vim -O $1.h $1.cpp
+}
+function partialgen {
+	cp ~/Downloads/$1.c $1.c
+	cp ~/Downloads/$1.h function.h
+}
+function upload {
+	git add --all
+	git commit -m "$1"
+	git push -u origin master
+}
+function save {
+	make
+	git add --all
+	git commit -m "update"
+	git push -u origin master
+	# ssh -t u105021226@learn.math.nthu.edu.tw "cd ~/data/notes ; git pull origin master ; exit"
+}
+
+# NOTES ALIAS
+function init {
+	cd ~/notes
+	update
+	echo " " >> `date +%Y`-`date +%b`.note
+	echo "********************************************************************************" >> `date +%Y`-`date +%b`.note
+	date >> `date +%Y`-`date +%b`.note
+	vim `date +%Y`-`date +%b`.note
+}
+function note {
+	cd ~/notes
+	update
+	vim `date +%Y`-`date +%b`.note
+}
+alias line="chromium 'chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html'"
+
+# MUSIC ALIAS
+alias classic="mpv http://onair.family977.com.tw:8000/live.mp3"
+alias bible="mpv http://192.240.97.67:8153/"
+
+# VIDEO ALIAS
+alias play="mpv *.mp4"
+
+
+function save_zsh {
+	cd ~/utils
+	update
+	cp ~/.zshrc zshrc_linux
+	save
+}
+
+# ZSH settings
+setopt PROMPT_CR
+setopt PROMPT_SP
+export PROMPT_EOL_MARK=""
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
