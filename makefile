@@ -18,7 +18,7 @@ arch:
 	cp zshrc_linux ~/.zshrc
 	exec zsh
 ubuntu:
-	sudo apt intsall konsole fonts-firacode zsh
+	sudo apt install konsole fonts-firacode zsh
 	cp Dracula.colorscheme ~/.local/share/konsole/
 	cp zshrc_ubuntu ~/.zshrc
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
