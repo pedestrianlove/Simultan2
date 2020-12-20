@@ -18,7 +18,9 @@ arch:
 	cp zshrc_linux ~/.zshrc
 	exec zsh
 ubuntu:
-	sudo apt install konsole fonts-firacode zsh
+	git clone --branch release --depth 1 'https://github.com/adobe-fonts/source-code-pro.git' "~/adobe-fonts/source-code-pro"
+	fc-cache -f -v "~/adobe-fonts/source-code-pro"
+	sudo apt install konsole fonts-firacode zsh conky
 	mkdir ~/.local/share/konsole/
 	cp Dracula.colorscheme ~/.local/share/konsole/
 	cp zshrc_ubuntu ~/.zshrc
