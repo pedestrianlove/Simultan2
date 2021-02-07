@@ -6,8 +6,7 @@ build:
 osx:
 	brew install zsh
 	brew install exa
-	brew tap sambadevi/powerlevel9k
-	brew install powerlevel9k
+	brew install romkatv/powerlevel10k/powerlevel10k
 	cp zshrc_osx ~/.zshrc
 	exec zsh
 
